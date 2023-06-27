@@ -803,9 +803,6 @@ const menuItems = [
         featured: true
     }
 ];
-
-if (IsLocal || IsLiveTests) {
-    const extras = [
         {
             name: 'Legacy Files',
             extensionId: 'jgFiles',
