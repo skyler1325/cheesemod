@@ -267,6 +267,24 @@ const CustomProcedures = props => (
                         />
                     </div>
                 </div>
+                <div
+                    className={styles.optionCard}
+                    role="button"
+                    tabIndex="0"
+                    onClick={props.onAddNumber}
+                >
+                    <img
+                        className={styles.optionIcon}
+                        src={numberIcon}
+                    />
+                    <div className={styles.optionTitle}>
+                        <FormattedMessage
+                            defaultMessage="Add a Number Input"
+                            description="a button to add a number input"
+                            id="gui.customProcedures.addANjmber"
+                        />
+                    </div>
+                </div>
             </div>
             <div className={styles.checkboxRow}>
                 <label>
