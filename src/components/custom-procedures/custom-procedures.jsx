@@ -152,7 +152,12 @@ const BlockColorSection = props => (
                     onClick={() => props.setHexBlockColor("#BBBBBB")}
                 />
             </div>
-        </div>
+            <div>
+                <button
+                    className={styles.presetColor}
+                    style={{ background: "#FF0000" }}
+                    onClick={() => props.setHexBlockColor("#FF0000")}
+                />
     </details>
 )
 
