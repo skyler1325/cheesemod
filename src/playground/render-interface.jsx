@@ -322,8 +322,8 @@ class Interface extends React.Component {
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
-                                        defaultMessage="PenguinMod is a mod of TurboWarp to add new blocks and features either in extensions or in PenguinMod's main toolbox. TurboWarp is a Scratch mod that compiles projects to JavaScript to make them run really fast. Try it out by choosing an uploaded project below or making your own in the editor."
-                                        description="Description of PenguinMod and TurboWarp"
+                                        defaultMessage="Dinosaurmod is a mod of Penguinmod that is a mod of Turbowarp that is a mod of scratch, this is in demo so it's buggy. dinosaurmod has added a few features like: new keys ( ä, ö, ü, €, ¡, ) and more! and also added extra keys to sensing block when key hit! you do need to enable extra keys addon to unlock the keys!"
+                                        description="Description of Dinosaurmod"
                                         id="tw.home.description"
                                     />
                                 </p>
