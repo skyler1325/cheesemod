@@ -25,12 +25,12 @@ const manifest = {
   "settings": [
     {
       "dynamic": true,
-      "name": "Maximum Zoom (100-500%)",
+      "name": "Maximum Zoom (100-750%)",
       "id": "maxZoom",
       "type": "integer",
       "min": 100,
       "default": 300,
-      "max": 500
+      "max": 750
     },
     {
       "dynamic": true,
@@ -43,12 +43,12 @@ const manifest = {
     },
     {
       "dynamic": true,
-      "name": "Start Zoom (50-500%)",
+      "name": "Start Zoom (50-750%)",
       "id": "startZoom",
       "type": "integer",
       "min": 50,
       "default": 68,
-      "max": 500
+      "max": 750
     },
     {
       "dynamic": true,
