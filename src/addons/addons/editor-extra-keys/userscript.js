@@ -110,8 +110,6 @@ export default async function ({ addon, msg }) {
         field.menuGenerator_ = appendKeys(
           defaultKeys ? [...defaultKeys] : field.menuGenerator_,
           block.type === "event_whenkeypressed"
-          block.type === "event_whenkeyhit"
-          block.type === "events_whenkeyhit"
         );
       }
     }
