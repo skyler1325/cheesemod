@@ -51,6 +51,8 @@ export default async function ({ addon, msg }) {
             ["ü", "ü"],
             ["ß", "ß"],
             ["€", "€"],
+            ["≠", "≠"],
+            ["•", "•"],
             ["backspace", "backspace"],
             ["delete", "delete"],
             ["shift", "shift"],
@@ -104,6 +106,7 @@ export default async function ({ addon, msg }) {
           defaultKeys ? [...defaultKeys] : field.menuGenerator_,
           block.type === "event_whenkeypressed"
           block.type === "event_whenkeyhit"
+          block.type === "event_whenkeyshit"
         );
       }
     }
