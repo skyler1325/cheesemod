@@ -7,6 +7,7 @@ import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-i
 import booleanInputIcon from './icon--boolean-input.svg';
 import textInputIcon from './icon--text-input.svg';
 import labelIcon from './icon--label.svg';
+import numberIcon from './icon--number-input';
 
 import styles from './custom-procedures.css';
 
