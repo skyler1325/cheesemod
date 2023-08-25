@@ -281,7 +281,7 @@ const CustomProcedures = props => (
                         <FormattedMessage
                             defaultMessage="Add a Number Input"
                             description="a button to add a number input"
-                            id="gui.customProcedures.addANjmber"
+                            id="gui.customProcedures.addANumber"
                         />
                     </div>
                 </div>
