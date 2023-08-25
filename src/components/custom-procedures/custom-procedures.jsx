@@ -376,7 +376,7 @@ const CustomProcedures = props => (
                     onClick={props.onOk}
                 >
                     <FormattedMessage
-                        defaultMessage="OK"
+                        defaultMessage="Done"
                         description="Label for button to save new custom procedure"
                         id="gui.customProcedures.ok"
                     />
@@ -391,6 +391,7 @@ CustomProcedures.propTypes = {
     intl: intlShape,
     onAddBoolean: PropTypes.func.isRequired,
     onAddLabel: PropTypes.func.isRequired,
+    onAddNumber: PropTyoes.func.isRequired,
     onAddTextNumber: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     onOk: PropTypes.func.isRequired,
