@@ -66,51 +66,6 @@ export default async function ({ addon, msg }) {
           ]
         );
       }
-      if (enableShiftKeys && addon.settings.get("shiftKeys")) {
-        keys.push(
-          ...[
-            ["!", "!"],
-            ["@", "@"],
-            ["#", "#"],
-            ["$", "$"],
-            ["%", "%"],
-            ["^", "^"],
-            ["&", "&"],
-            ["*", "*"],
-            ["(", "("],
-            [")", ")"],
-            ["_", "_"],
-            ["+", "+"],
-            ["{", "{"],
-            ["}", "}"],
-            ["|", "|"],
-            [":", ":"],
-            ['"', '"'],
-            ["?", "?"],
-            ["<", "<"],
-            [">", ">"],
-            ["~", "~"],
-          ]
-        );
-      }
-      if (addon.settings.get("twKeys")) {
-        keys.push(
-          ...[
-            ["backspace", "backspace"],
-            ["delete", "delete"],
-            ["shift", "shift"],
-            ["caps lock", "caps lock"],
-            ["scroll lock", "scroll lock"],
-            ["control", "control"],
-            ["escape", "escape"],
-            ["insert", "insert"],
-            ["home", "home"],
-            ["end", "end"],
-            ["page up", "page up"],
-            ["page down", "page down"],
-          ]
-        );
-      }
     }
     return keys;
   }
@@ -134,7 +89,7 @@ export default async function ({ addon, msg }) {
     if (workspace && flyout) {
       const allBlocks = [...workspace.getAllBlocks(), ...flyout.getWorkspace().getAllBlocks()];
       for (const block of allBlocks) {
-        if (block.type !== "event_whenkeypressed" && block.type !== "sensing_keyoptions") {
+        if (block.type !== "event_whenkeypressed" && block.type !== "sensing_keyoptions" && block.type !== "event_whenkeyhit") {
           continue;
         }
         const input = block.inputList[0];
@@ -148,6 +103,7 @@ export default async function ({ addon, msg }) {
         field.menuGenerator_ = appendKeys(
           defaultKeys ? [...defaultKeys] : field.menuGenerator_,
           block.type === "event_whenkeypressed"
+          block.type === "event_whenkeyhit"
         );
       }
     }
