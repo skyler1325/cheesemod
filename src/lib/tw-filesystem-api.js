@@ -18,7 +18,7 @@ const showOpenFilePicker = async () => {
         multiple: false,
         types: [
             {
-                description: 'Zinc Coding program.',
+                description: 'PenguinMod Project',
                 accept: {
                     'application/x.scratch.sb3': ['.zinc', '.pmp', '.pm', '.sb3', '.sb2', '.sb']
                 }
