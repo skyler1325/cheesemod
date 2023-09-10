@@ -4,9 +4,9 @@ const showSaveFilePicker = fileName => window.showSaveFilePicker({
     suggestedName: fileName,
     types: [
         {
-            description: 'PenguinMod Project',
+            description: 'Zinc Coding program.',
             accept: {
-                'application/x.scratch.sb3': '.pmp'
+                'application/x.scratch.sb3': '.zinc'
             }
         }
     ],
@@ -18,9 +18,9 @@ const showOpenFilePicker = async () => {
         multiple: false,
         types: [
             {
-                description: 'PenguinMod Project',
+                description: 'Zinc Coding program.',
                 accept: {
-                    'application/x.scratch.sb3': ['.pmp', '.pm', '.sb3', '.sb2', '.sb']
+                    'application/x.scratch.sb3': ['.zinc' '.pmp', '.pm', '.sb3', '.sb2', '.sb']
                 }
             }
         ]
