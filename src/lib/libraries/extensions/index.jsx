@@ -657,22 +657,6 @@ const menuItems = [
         twDeveloper: 'GarboMuffin'
     },
     {
-        name: 'Control Controls',
-        extensionId: 'https://extensions.turbowarp.org/NexusKitten/controlcontrols.js',
-        tags: ['turbowarp'],
-        insetIconURL: "https://extensions.turbowarp.org/images/NexusKitten/controlcontrols.svg",
-        iconURL: #dd6000,
-        description: (
-            <FormattedMessage
-                defaultMessage="Manage the start button, stop sign and others!"
-                description="Manage controls"
-            />
-        ),
-        featured: true,
-        internetConnectionRequired: false,
-        twDeveloper: 'NexusKitten'
-    },
-    {
         name: 'Mouse Cursor',
         extensionId: 'https://extensions.turbowarp.org/cursor.js',
         tags: ['turbowarp'],
