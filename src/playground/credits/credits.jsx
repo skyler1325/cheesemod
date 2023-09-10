@@ -58,13 +58,13 @@ const Credits = () => (
             </h1>
         </header>
         <section>
-            <h1>PenguinMod</h1>
+            <h1>Zinc Coding</h1>
         </section>
         <section>
             <h2>Thank you</h2>
             <p>
-                Without TurboWarp, PenguinMod may have never existed.
-                Thank you to everyone who worked on Scratch and TurboWarp,
+                Without TurboWarp and PenguinMod, Zinc Coding may have never existed.
+                Thank you to everyone who worked on Scratch, TurboWarp and Penguinmod,
                 you have made many people finally be able to make whatever they can imagine.
             </p>
             <a href="https://scratch.mit.edu/donate">
@@ -76,9 +76,8 @@ const Credits = () => (
             </a>
             <h2>Contributors</h2>
             <p>
-                PenguinMod is made by a small bunch of developers.
-                A list is below, but you can also check <a href="https://github.com/orgs/PenguinMod/people">our GitHub</a> incase this one is out of date.
-            </p>
+                Zinc Coding is made by a single developer, Scratch user huckleberrya.
+        </p>
             <UserList users={UserData.pmDevelopers} />
             <p><i>The list order is randomized on each refresh.</i></p>
         </section>

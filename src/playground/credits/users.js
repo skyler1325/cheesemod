@@ -115,6 +115,10 @@ const addonDevelopers = [
     {
         userId: '64691048',
         username: 'CST1229'
+    },
+    {
+        userId: '88323183',
+        username: 'huckleberrya'
     }
     // TODO: retronbv is banned?
 ].map(fromHardcoded);
