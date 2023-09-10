@@ -273,7 +273,7 @@ class Interface extends React.Component {
                             {/* project not approved message */}
                             {(!extraProjectInfo.accepted) && (
                                 <div className={styles.remixWarningBox}>
-                                    <p>This project is not approved. Be careful when running this project.</p>
+                                    <p>This project is not approved by PenguinMod. This project may be blank or inappropiate for kids. Zinc Coding was developed by a kid.</p>
                                 </div>
                             )}
                             {/* remix info */}
@@ -300,7 +300,7 @@ class Interface extends React.Component {
                                                 >
                                                     {remixedProjectInfo.author}
                                                 </a>
-                                            </b> for the original project <b>
+                                            </b> for the original PenguinMod project <b>
                                                 <a
                                                     href={`${window.location.origin}/#${extraProjectInfo.remixId}`}
                                                 >
