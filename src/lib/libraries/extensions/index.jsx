@@ -862,6 +862,15 @@ const menuItems = [
         ),
         tags: ['tw'],
         featured: true
+        {
+        name: 'Hacked Block Collection',
+        extensionId: 'https://extensions.turbowarp.org/Lily/HackedBlocks.js',
+        iconURL: 'https://extensions.turbowarp.org/images/unknown.svg',
+        twDeveloper: 'LilyMakesThings',
+        description: 'Various modified vanilla blocks.',
+        featured: true
+
+    },
     }
 ];
 
