@@ -35,6 +35,12 @@ const showOpenFilePicker = async () => {
                     'application/x.scratch.sb3': ['.sb3', '.sb2', '.sb']
                 }
             }
+            {
+                description: 'ZIP Archive',
+                accept: {
+                    'application/x.scratch.sb3': ['.zip']
+                }
+            }
         ]
     });
     return handle;
