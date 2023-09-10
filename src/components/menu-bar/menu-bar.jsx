@@ -861,22 +861,6 @@ class MenuBar extends React.Component {
                             />)
                             : (null)}
                     </div>
-                    <div className={styles.menuBarItem}>
-                        <a
-                            className={styles.feedbackLink}
-                            href="https://penguinmod.site"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            <Button className={styles.feedbackButton}>
-                                <FormattedMessage
-                                    defaultMessage="Back to Home"
-                                    description="Button to go back to the home page"
-                                    id="pm.backToHomeButton"
-                                />
-                            </Button>
-                        </a>
-                    </div>
                 </div>
 
                 <div className={styles.accountInfoGroup}>
