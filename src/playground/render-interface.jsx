@@ -344,7 +344,7 @@ class Interface extends React.Component {
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
-                                        defaultMessage="Zinc Coding is a mod of PenguinMod to add new features that PenguinMod will add in the future or never. Zinc Coding was named after the 30th chemical element, Zinc. Zinc Coding adds a lot of new extensions that will amaze the viewer. You can see PenguinMod's uploaded projects below, or make you own project by clicking See Inside."
+                                        defaultMessage="Zinc Coding is a mod of PenguinMod to add new features that PenguinMod will add in the future or never. Zinc Coding was named after the 30th chemical element, Zinc, and was developed by a 10-year old. Zinc Coding is 100% compatible with PenguinMod, so there is no worries uploading a Zinc Coding program to PenguinMod. You can see PenguinMod's uploaded projects below, or make you own project by clicking See Inside."
                                         description="Description of PenguinMod and TurboWarp"
                                         id="tw.home.description"
                                     />
