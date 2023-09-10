@@ -22,10 +22,9 @@ const CrashMessage = props => (
             </p>
             <p>
                 <FormattedMessage
-                    defaultMessage={'We are so sorry, but it looks like the page has crashed.' +
-                        ' Please refresh your page to try' +
-                        ' again.' +
-                        ' If the problem persists, please report this error to our Discord.'}
+                    defaultMessage={'We are so sorry, but Zinc Coding crashed.' +
+                        ' Please refresh your page to try again.' +
+                        ' If the problem persists, please tell huckleberrya about this issue.'}
                     description="Message to inform the user that page has crashed."
                     id="tw.gui.crashMessage.description"
                 />

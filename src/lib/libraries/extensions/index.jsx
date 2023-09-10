@@ -526,6 +526,34 @@ const menuItems = [
         featured: true
     },
     {
+        name: 'Jeremys Dev Tools',
+        extensionId: 'jgDev',
+        iconURL: defaultExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
+        featured: true
+    },
+    {
+        name: '3D Physics',
+        extensionId: 'fr3d',
+        iconURL: fr3dPhysicsExtensionIcon,
+        tags: ['penguinmod'],
+        customInsetColor: '#D066FE',
+        insetIconURL: fr3dPhysicsInsetExtensionIcon,
+        description: 'Physics for the 3D extension.',
+        featured: true
+    },
+    {
+        name: '3D Virtual Reality',
+        extensionId: 'jg3dVr',
+        iconURL: jg3dVrExtensionIcon,
+        tags: ['penguinmod', 'hardware'],
+        customInsetColor: '#B200FF',
+        insetIconURL: jg3dVrInsetExtensionIcon,
+        description: 'In development. May break compatibility. Allow players to really jump into your world!',
+        featured: true
+    },
+    {
         name: 'McUtils',
         extensionId: 'https://extensions.turbowarp.org/Lily/McUtils.js', // update reference once file names are updated
         tags: ['turbowarp'],
@@ -942,34 +970,6 @@ if (IsLocal || IsLiveTests) {
             iconURL: jgPermissionExtensionIcon,
             tags: ['penguinmod'],
             description: 'Legacy extension, old blocks no longer serve a real purpose. Direct blocks to manage permissions that PenguinMod requires you have to do certain tasks.',
-            featured: true
-        },
-        {
-            name: 'Jeremys Dev Tools',
-            extensionId: 'jgDev',
-            iconURL: defaultExtensionIcon,
-            tags: ['penguinmod'],
-            description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
-            featured: true
-        },
-        {
-            name: '3D Physics',
-            extensionId: 'fr3d',
-            iconURL: fr3dPhysicsExtensionIcon,
-            tags: ['penguinmod'],
-            customInsetColor: '#D066FE',
-            insetIconURL: fr3dPhysicsInsetExtensionIcon,
-            description: 'Physics for the 3D extension.',
-            featured: true
-        },
-        {
-            name: '3D Virtual Reality',
-            extensionId: 'jg3dVr',
-            iconURL: jg3dVrExtensionIcon,
-            tags: ['penguinmod', 'hardware'],
-            customInsetColor: '#B200FF',
-            insetIconURL: jg3dVrInsetExtensionIcon,
-            description: 'In development. May break compatibility. Allow players to really jump into your world!',
             featured: true
         },
         {
