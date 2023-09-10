@@ -526,14 +526,6 @@ const menuItems = [
         featured: true
     },
     {
-        name: 'Jeremys Dev Tools',
-        extensionId: 'jgDev',
-        iconURL: defaultExtensionIcon,
-        tags: ['penguinmod'],
-        description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
-        featured: true
-    },
-    {
         name: '3D Physics',
         extensionId: 'fr3d',
         iconURL: fr3dPhysicsExtensionIcon,
@@ -551,6 +543,42 @@ const menuItems = [
         customInsetColor: '#B200FF',
         insetIconURL: jg3dVrInsetExtensionIcon,
         description: 'In development. May break compatibility. Allow players to really jump into your world!',
+        featured: true
+    },
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="OOP"
+                description="Name of OOP extension"
+                id="jwStructs.jwStructsExtension.name"
+            />
+        ),
+        extensionId: 'jwStructs',
+        tags: ['penguinmod'],
+        iconURL: jwStructsExtensionIcon,
+        description: (
+            <FormattedMessage
+                defaultMessage="Removed from list. OOP blocks. OOp is a programming paradigm that uses objects and their interactions to design applications and computer programs."
+                description="Description of OOP extension"
+                id="jwStructs.jwStructsExtension.description"
+            />
+        ),
+        featured: true
+    },
+    {
+        name: 'Inline Blocks',
+        extensionId: 'pmInlineBlocks',
+        iconURL: pmInlineBlocksExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'Create quick blocks for simple tasks. Insert them into any circle spot and have them return any value you want.',
+        featured: true
+    },
+    {
+        name: 'Scripts',
+        extensionId: 'jgScripts',
+        iconURL: defaultExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'In development. Create compiled scripts with blocks while the project is running.',
         featured: true
     },
     {
@@ -906,6 +934,14 @@ const menuItems = [
 if (IsLocal || IsLiveTests) {
     const extras = [
         {
+            name: 'Jeremys Dev Tools',
+            extensionId: 'jgDev',
+            iconURL: defaultExtensionIcon,
+            tags: ['penguinmod'],
+            description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
+            featured: true
+        },
+        {
             name: 'Camera',
             extensionId: 'pmCamera',
             iconURL: defaultExtensionIcon,
@@ -945,26 +981,6 @@ if (IsLocal || IsLiveTests) {
             featured: true
         },
         {
-            name: (
-                <FormattedMessage
-                    defaultMessage="OOP"
-                    description="Name of OOP extension"
-                    id="jwStructs.jwStructsExtension.name"
-                />
-            ),
-            extensionId: 'jwStructs',
-            tags: ['penguinmod'],
-            iconURL: jwStructsExtensionIcon,
-            description: (
-                <FormattedMessage
-                    defaultMessage="Removed from list. OOP blocks. OOp is a programming paradigm that uses objects and their interactions to design applications and computer programs."
-                    description="Description of OOP extension"
-                    id="jwStructs.jwStructsExtension.description"
-                />
-            ),
-            featured: true
-        },
-        {
             name: 'PenguinMod Permissions',
             extensionId: 'JgPermissionBlocks',
             iconURL: jgPermissionExtensionIcon,
@@ -991,14 +1007,6 @@ if (IsLocal || IsLiveTests) {
             featured: true
         },
         {
-            name: 'Scripts',
-            extensionId: 'jgScripts',
-            iconURL: defaultExtensionIcon,
-            tags: ['penguinmod'],
-            description: 'In development. Create compiled scripts with blocks while the project is running.',
-            featured: true
-        },
-        {
             name: 'Packager Applications',
             extensionId: 'jgPackagerApplications',
             iconURL: jgPackagerApplicationsExtensionIcon,
@@ -1015,14 +1023,6 @@ if (IsLocal || IsLiveTests) {
             iconURL: defaultExtensionIcon,
             tags: ['penguinmod'],
             description: 'dr bob eae',
-            featured: true
-        },
-        {
-            name: 'Inline Blocks',
-            extensionId: 'pmInlineBlocks',
-            iconURL: pmInlineBlocksExtensionIcon,
-            tags: ['penguinmod'],
-            description: 'Create quick blocks for simple tasks. Insert them into any circle spot and have them return any value you want.',
             featured: true
         },
         {
