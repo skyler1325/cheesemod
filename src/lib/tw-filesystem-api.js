@@ -22,6 +22,18 @@ const showOpenFilePicker = async () => {
                 accept: {
                     'application/x.scratch.sb3': ['.zinc']
                 }
+            },
+            {
+                description: 'PenguinMod Project',
+                accept: {
+                    'application/x.scratch.sb3': ['.pmp', '.pm']
+                }
+            },
+            {
+                description: 'Scratch/Turbowarp Project',
+                accept: {
+                    'application/x.scratch.sb3': ['.sb3', '.sb2', '.sb']
+                }
             }
         ]
     });
