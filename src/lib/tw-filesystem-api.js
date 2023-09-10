@@ -20,7 +20,7 @@ const showOpenFilePicker = async () => {
             {
                 description: 'Zinc Coding program.',
                 accept: {
-                    'application/x.scratch.sb3': ['.zinc' '.pmp', '.pm', '.sb3', '.sb2', '.sb']
+                    'application/x.scratch.sb3': ['.zinc', '.pmp', '.pm', '.sb3', '.sb2', '.sb']
                 }
             }
         ]
