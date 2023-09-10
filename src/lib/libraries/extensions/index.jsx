@@ -516,6 +516,16 @@ const menuItems = [
         featured: true
     },
     {
+        name: '3D',
+        extensionId: 'jg3d',
+        iconURL: jg3dExtensionIcon,
+        tags: ['penguinmod'],
+        customInsetColor: '#B200FF',
+        insetIconURL: jg3dInsetExtensionIcon,
+        description: 'Use the magic of 3D to spice up your project.',
+        featured: true
+    },
+    {
         name: 'McUtils',
         extensionId: 'https://extensions.turbowarp.org/Lily/McUtils.js', // update reference once file names are updated
         tags: ['turbowarp'],
@@ -863,6 +873,10 @@ const menuItems = [
         tags: ['tw'],
         featured: true
     },
+];
+
+if (IsLocal || IsLiveTests) {
+    const extras = [
         {
             name: 'Camera',
             extensionId: 'pmCamera',
@@ -936,16 +950,6 @@ const menuItems = [
             iconURL: defaultExtensionIcon,
             tags: ['penguinmod'],
             description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
-            featured: true
-        },
-        {
-            name: '3D',
-            extensionId: 'jg3d',
-            iconURL: jg3dExtensionIcon,
-            tags: ['penguinmod'],
-            customInsetColor: '#B200FF',
-            insetIconURL: jg3dInsetExtensionIcon,
-            description: 'Use the magic of 3D to spice up your project.',
             featured: true
         },
         {
@@ -1062,6 +1066,7 @@ const menuItems = [
     extras.forEach(ext => {
         menuItems.push(ext);
     });
+}
 
 
 export default menuItems;
