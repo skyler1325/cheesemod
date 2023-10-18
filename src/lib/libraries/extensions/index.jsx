@@ -492,7 +492,7 @@ const menuItems = [
     },
     {
         name: 'CloudLink',
-        extensionId: 'https://mikedev101.github.io/cloudlink/scratch/cloudlink_penguinmod_0.1.0.js',
+        extensionId: 'https://mikedev101.github.io/cloudlink/scratch/cloudlink_penguinmod.js',
         tags: ['penguinmod', 'turbowarp'],
         insetIconURL: cloudlinkIcon,
         iconURL: 'https://extensions.turbowarp.org/images/cloudlink.svg',
