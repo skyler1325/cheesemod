@@ -504,14 +504,14 @@ const menuItems = [
     },
     {
         name: 'CloudLink',
-        extensionId: 'https://extensions.turbowarp.org/cloudlink.js',
-        tags: ['turbowarp'],
+        extensionId: 'https://mikedev101.github.io/cloudlink/scratch/cloudlink_penguinmod.js',
+        tags: ['penguinmod', 'turbowarp'],
         insetIconURL: cloudlinkIcon,
         iconURL: 'https://extensions.turbowarp.org/images/cloudlink.svg',
-        description: 'A cool extension to interact with webservers',
+        description: 'A powerful websocket extension.',
         featured: true,
-        extDeveloper: 'MikeDev',
-        internetConnectionRequired: false
+        extDeveloper: 'MikeDev101',
+        internetConnectionRequired: true
     },
     {
         name: 'LZ Compress',
