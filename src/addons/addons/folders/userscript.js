@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default async function ({ addon, console, msg }) {
   // The basic premise of how this addon works is relative simple.
   // scratch-gui renders the sprite selectors and asset selectors in a hierarchy like this:
@@ -971,7 +972,7 @@ export default async function ({ addon, console, msg }) {
         if (Array.isArray(targets) && !wholeProject) {
           for (const target of targets) {
             if (target.sprite) {
-              target.sprite.name = setFolderOfName(target.sprite.name, currentSpriteFolder);
+              target.sprite.folder = currentSpriteFolder;
             }
           }
         }
@@ -987,7 +988,7 @@ export default async function ({ addon, console, msg }) {
       if (currentAssetFolder !== null) {
         const costume = args[0];
         if (costume && typeof getFolderFromName(costume.name) !== "string") {
-          costume.name = setFolderOfName(costume.name, currentAssetFolder);
+          costume.folder = currentAssetFolder;
         }
       }
       const r = originalAddCostume.call(this, ...args);
@@ -1000,7 +1001,7 @@ export default async function ({ addon, console, msg }) {
       if (currentAssetFolder !== null) {
         const sound = args[0];
         if (sound && typeof getFolderFromName(sound.name) !== "string") {
-          sound.name = setFolderOfName(sound.name, currentAssetFolder);
+          sound.folder = currentAssetFolder;
         }
       }
       const r = originalAddSound.call(this, ...args);
