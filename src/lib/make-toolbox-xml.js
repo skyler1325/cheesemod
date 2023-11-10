@@ -58,40 +58,6 @@ const motion = function (isInitialSetup, isStage, targetId) {
                 </shadow>
             </value>
         </block>
-        <block type="motion_turnrightaroundxy">
-            <value name="DEGREES">
-                <shadow type="math_number">
-                    <field name="NUM">15</field>
-                </shadow>
-            </value>
-            <value name="X">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="Y">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="motion_turnleftaroundxy">
-            <value name="DEGREES">
-                <shadow type="math_number">
-                    <field name="NUM">15</field>
-                </shadow>
-            </value>
-            <value name="X">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="Y">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
         ${blockSeparator}
         <block type="motion_goto">
             <value name="TO">
@@ -212,18 +178,6 @@ const motion = function (isInitialSetup, isStage, targetId) {
         <block type="motion_ifonspritebounce">
             <value name="SPRITE">
                 <shadow type="motion_pointtowards_menu"></shadow>
-            </value>
-        </block>
-        <block type="motion_ifonxybounce">
-            <value name="X">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-            <value name="Y">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
             </value>
         </block>
         ${blockSeparator}
@@ -364,6 +318,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
             </block>
             <block type="looks_nextcostume"/>
             <block type="looks_previouscostume"/>
+            ${blockSeparator}
             <block type="looks_switchbackdropto">
                 <value name="BACKDROP">
                     <shadow type="looks_backdrops">
@@ -398,6 +353,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     </shadow>
                 </value>
             </block>
+            ${blockSeparator}
             <block type="looks_setStretch">
                 <value name="X">
                     <shadow type="math_number">
@@ -605,10 +561,12 @@ const events = function (isInitialSetup, isStage) {
     <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="#FFD500" secondaryColour="#CC9900">
         <block type="event_whenflagclicked"/>
         <block type="event_whenstopclicked"/>
+        ${blockSeparator}
         <block type="event_always"></block>
         <block type="event_whenanything">
             <value name="ANYTHING"></value>
         </block>
+        ${blockSeparator}
         <block type="event_whenkeypressed"></block>
         <block type="event_whenkeyhit"></block>
         <block type="event_whenmousescrolled"></block>
@@ -794,6 +752,12 @@ const sensing = function (isInitialSetup, isStage) {
                     <shadow type="colour_picker"/>
                 </value>
             </block>
+            ${blockSeparator}
+            <block type="sensing_getxyoftouchingsprite">
+                <value name="SPRITE">
+                    <shadow type="sensing_distancetomenu"/>
+                </value>
+            </block>
             <block type="sensing_distanceto">
                 <value name="DISTANCETOMENU">
                     <shadow type="sensing_distancetomenu"/>
@@ -844,12 +808,6 @@ const sensing = function (isInitialSetup, isStage) {
                 </value>
             </block>
             ${blockSeparator}
-            <block type="sensing_getxyoftouchingsprite">
-                <value name="SPRITE">
-                    <shadow type="sensing_distancetomenu"/>
-                </value>
-            </block>
-            ${blockSeparator}
         `}
         ${isInitialSetup ? '' : `
             <block id="askandwait" type="sensing_askandwait">
@@ -891,6 +849,7 @@ const sensing = function (isInitialSetup, isStage) {
                 <shadow type="sensing_scrolldirections"/>
             </value>
         </block>
+        ${blockSeparator}
         <block type="sensing_mousedown"/>
         <block type="sensing_mouseclicked"/>
         <block type="sensing_mousex"/>
@@ -913,14 +872,9 @@ const sensing = function (isInitialSetup, isStage) {
         ${blockSeparator}
         <block id="loudness" type="sensing_loudness"/>
         ${blockSeparator}
-        <block id="timer" type="sensing_timer"/>
         <block type="sensing_resettimer"/>
+        <block id="timer" type="sensing_timer"/>
         ${blockSeparator}
-        <block id="of" type="sensing_of">
-            <value name="OBJECT">
-                <shadow id="sensing_of_object_menu" type="sensing_of_object_menu"/>
-            </value>
-        </block>
         <block type="sensing_set_of">
             <value name="OBJECT">
                 <shadow id="sensing_of_object_menu" type="sensing_of_object_menu"/>
@@ -929,6 +883,11 @@ const sensing = function (isInitialSetup, isStage) {
                 <shadow type="text">
                     <field name="TEXT">0</field>
                 </shadow>
+            </value>
+        </block>
+        <block id="of" type="sensing_of">
+            <value name="OBJECT">
+                <shadow id="sensing_of_object_menu" type="sensing_of_object_menu"/>
             </value>
         </block>
         ${blockSeparator}
@@ -956,6 +915,7 @@ const sensing = function (isInitialSetup, isStage) {
                 <shadow id="sensing_fingeroptions" type="sensing_fingeroptions"/>
             </value>
         </block>
+        ${blockSeparator}
         <block type="sensing_username"/>
         ${categorySeparator}
     </category>

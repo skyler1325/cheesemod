@@ -12,6 +12,7 @@ import Filter from '../filter/filter.jsx';
 import TagButton from '../../containers/tag-button.jsx';
 import TagCheckbox from '../../containers/tag-checkbox.jsx';
 import Spinner from '../spinner/spinner.jsx';
+import Separator from '../tw-extension-separator/separator.jsx';
 
 import styles from './library.css';
 
@@ -27,6 +28,8 @@ const messages = defineMessages({
         description: 'Label for library tag to revert to all items after filtering by tag.'
     }
 });
+
+const PM_LIBRARY_API = "https://library.penguinmod.com/";
 
 const ALL_TAG = {tag: 'all', intlLabel: messages.allTag};
 const tagListPrefix = [];
@@ -168,6 +171,7 @@ class LibraryComponent extends React.Component {
             prevState.selectedTags.length !== this.state.selectedTags.length) {
             this.scrollToTop();
         }
+
         if (prevProps.data !== this.props.data) {
             // eslint-disable-next-line react/no-did-update-set-state
             this.setState({
@@ -446,7 +450,7 @@ class LibraryComponent extends React.Component {
                                 hidden={dataItem.hidden}
                                 href={dataItem.href}
                                 iconMd5={dataItem.costumes ? dataItem.costumes[0].md5ext : dataItem.md5ext}
-                                iconRawURL={dataItem.rawURL}
+                                iconRawURL={this.props.actor === "CostumeLibrary" ? `${PM_LIBRARY_API}files/${dataItem.libraryFilePage}` : dataItem.rawURL}
                                 icons={dataItem.costumes}
                                 id={index}
                                 _id={dataItem._id}

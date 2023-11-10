@@ -29,7 +29,6 @@ import TWStateManagerHOC from '../lib/tw-state-manager-hoc.jsx';
 import TWThemeHOC from '../lib/tw-theme-hoc.jsx';
 import SBFileUploaderHOC from '../lib/sb-file-uploader-hoc.jsx';
 import TWPackagerIntegrationHOC from '../lib/tw-packager-integration-hoc.jsx';
-import TWRestorePointHOC from '../lib/tw-restore-point-hoc.jsx';
 import SettingsStore from '../addons/settings-store-singleton';
 import '../lib/tw-fix-history-api';
 import GUI from './render-gui.jsx';
@@ -38,10 +37,9 @@ import MenuBar from '../components/menu-bar/menu-bar.jsx';
 import ProjectInput from '../components/tw-project-input/project-input.jsx';
 import FeaturedProjects from '../components/tw-featured-projects/featured-projects.jsx';
 import Description from '../components/tw-description/description.jsx';
-import WebGlModal from '../containers/webgl-modal.jsx';
 import BrowserModal from '../components/browser-modal/browser-modal.jsx';
-import CloudVariableBadge from '../components/tw-cloud-variable-badge/cloud-variable-badge.jsx';
-import { isRendererSupported, isBrowserSupported } from '../lib/tw-environment-support-prober';
+import CloudVariableBadge from '../containers/tw-cloud-variable-badge.jsx';
+import { isBrowserSupported } from '../lib/tw-environment-support-prober';
 import AddonChannels from '../addons/channels';
 import { loadServiceWorker } from './load-service-worker';
 import runAddons from '../addons/entry';
@@ -67,6 +65,31 @@ if (process.env.ANNOUNCEMENT) {
 const handleClickAddonSettings = () => {
     const path = process.env.ROUTING_STYLE === 'wildcard' ? 'addons' : 'addons.html';
     window.open(`${process.env.ROOT}${path}`);
+};
+
+const xmlEscape = function (unsafe) {
+    return unsafe.replace(/[<>&'"]/g, c => {
+        switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case '\'': return '&apos;';
+        case '"': return '&quot;';
+        }
+    });
+};
+const formatProjectTitle = (_title) => {
+    const title = xmlEscape(String(_title));
+    const emojiRegex = /:(\w+):/g;
+    return title.replace(emojiRegex, (match) => {
+        const emojiName = match.replace(/\:/gmi, "");
+        return `<img
+            src="https://library.penguinmod.com/files/emojis/${emojiName}.png"
+            alt=":${emojiName}:"
+            title=":${emojiName}:"
+            style="width:1.75rem;vertical-align: middle;"
+        >`;
+    });
 };
 
 const messages = defineMessages({
@@ -102,7 +125,7 @@ runAddons();
 //     // if we have already gotten the details of this project, avoid making another request since they likely never changed
 //     if (projectDetailCache[String(id)] != null) return projectDetailCache[String(id)];
 
-//     const response = await fetch(`https://projects.penguinmod.site/api/projects/getPublished?id=${id}`);
+//     const response = await fetch(`https://projects.penguinmod.com/api/projects/getPublished?id=${id}`);
 //     // Don't continue if the api never returned 200-299 since we would cache an error as project details
 //     if (!response.ok) return {};
 
@@ -131,16 +154,16 @@ const Footer = () => (
                             id="tw.footer.credits"
                         />
                     </a>
-                    <a href="https://github.com/sponsors/GarboMuffin">
+                    <a href="https://penguinmod.com/donate">
                         <FormattedMessage
-                            defaultMessage="Donate to TurboWarp Developer"
+                            defaultMessage="Donate"
                             description="Donation link in footer"
                             id="tw.footer.donate"
                         />
                     </a>
                 </div>
                 <div className={styles.footerSection}>
-                    <a href="https://studio.penguinmod.site/PenguinMod-Packager">
+                    <a href="https://studio.penguinmod.com/PenguinMod-Packager">
                         {/* Do not translate */}
                         {'PenguinMod Packager'}
                     </a>
@@ -215,11 +238,17 @@ class Interface extends React.Component {
             document.title = `${title} - PenguinMod`;
         }
     }
+    copyProjectLink(id) {
+        if ("clipboard" in navigator && "writeText" in navigator.clipboard) {
+            navigator.clipboard.writeText(`https://projects.penguinmod.com/${id}`);
+        }
+    }
     render() {
         const {
             /* eslint-disable no-unused-vars */
             intl,
             hasCloudVariables,
+            title,
             description,
             extraProjectInfo,
             remixedProjectInfo,
@@ -260,6 +289,20 @@ class Interface extends React.Component {
                     }) : null}
                 >
                     {isHomepage && announcement ? <DOMElementRenderer domElement={announcement} /> : null}
+                    {isHomepage && projectId !== '0' && title && extraProjectInfo && extraProjectInfo.author && <div className={styles.projectDetails}>
+                        <a target='_blank' href={`https://penguinmod.com/profile?user=${extraProjectInfo.author}`}>
+                            <img
+                                className={styles.projectAuthorImage}
+                                title={extraProjectInfo.author}
+                                alt={extraProjectInfo.author}
+                                src={`https://trampoline.turbowarp.org/avatars/by-username/${extraProjectInfo.author}`}
+                            />
+                        </a>
+                        <div className={styles.projectMetadata}>
+                            <h2 dangerouslySetInnerHTML={{ __html: formatProjectTitle(title) }}></h2>
+                            <p>by <a target='_blank' href={`https://penguinmod.com/profile?user=${extraProjectInfo.author}`}>{extraProjectInfo.author}</a></p>
+                        </div>
+                    </div>}
                     <GUI
                         onClickAddonSettings={handleClickAddonSettings}
                         onClickTheme={onClickTheme}
@@ -283,7 +326,7 @@ class Interface extends React.Component {
                                         <a
                                             style={{ height: "32px" }}
                                             target="_blank"
-                                            href={`https://penguinmod.site/profile?user=${remixedProjectInfo.author}`}
+                                            href={`https://penguinmod.com/profile?user=${remixedProjectInfo.author}`}
                                         >
                                             <img
                                                 className={styles.remixAuthorImage}
@@ -296,7 +339,7 @@ class Interface extends React.Component {
                                             Thanks to <b>
                                                 <a
                                                     target="_blank"
-                                                    href={`https://penguinmod.site/profile?user=${remixedProjectInfo.author}`}
+                                                    href={`https://penguinmod.com/profile?user=${remixedProjectInfo.author}`}
                                                 >
                                                     {remixedProjectInfo.author}
                                                 </a>
@@ -310,9 +353,6 @@ class Interface extends React.Component {
                                         </p>
                                     </div>
                                 </div>
-                            )}
-                            {isRendererSupported() ? null : (
-                                <WebGlModal isRtl={isRtl} />
                             )}
                             {isBrowserSupported() ? null : (
                                 <BrowserModal isRtl={isRtl} />
@@ -332,15 +372,35 @@ class Interface extends React.Component {
                                 </div>
                             ) : null}
                             <VoteFrame id={projectId} darkmode={this.props.isDark}></VoteFrame>
-                            {extraProjectInfo.author && (
-                                <a
-                                    target="_blank"
-                                    href={`https://penguinmod.site/profile?user=${extraProjectInfo.author}`}
-                                >
-                                    View other projects by {extraProjectInfo.author}
-                                </a>
+                            {projectId !== '0' && (
+                                <div className={styles.centerSector}>
+                                    <button
+                                        onClick={() => this.copyProjectLink(projectId)}
+                                        className={styles.shareLink}
+                                    >
+                                        <img src="/share_project.png" alt=">"></img>
+                                        Copy Link
+                                    </button>
+                                    {extraProjectInfo.author && (
+                                        <a
+                                            target="_blank"
+                                            href={`https://penguinmod.com/profile?user=${extraProjectInfo.author}`}
+                                        >
+                                            View other projects by {extraProjectInfo.author}
+                                        </a>
+                                    )}
+                                    <a
+                                        target='_blank'
+                                        href={`https://penguinmod.com/report?type=project&id=${projectId}`}
+                                        className={styles.reportLink}
+                                    >
+                                        <img src="/report_flag.png" alt="!"></img>
+                                        Report
+                                    </a>
+                                </div>
                             )}
-                            <div className={styles.section}>
+                            {/* this is pretty pointless now that we have the home page... */}
+                            {/* <div className={styles.section}>
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
@@ -349,13 +409,13 @@ class Interface extends React.Component {
                                         id="tw.home.description"
                                     />
                                 </p>
-                            </div>
+                            </div> */}
                             <div className={styles.section}>
                                 <FeaturedProjects />
                             </div>
                             <a
                                 target="_blank"
-                                href="https://penguinmod.site/search?q=all:projects"
+                                href="https://penguinmod.com/search?q=all:projects"
                             >
                                 See more projects
                             </a>
@@ -402,6 +462,7 @@ Interface.propTypes = {
 const mapStateToProps = state => ({
     hasCloudVariables: state.scratchGui.tw.hasCloudVariables,
     customStageSize: state.scratchGui.customStageSize,
+    title: state.scratchGui.projectTitle,
     description: state.scratchGui.tw.description,
     extraProjectInfo: state.scratchGui.tw.extraProjectInfo,
     remixedProjectInfo: state.scratchGui.tw.remixedProjectInfo,
@@ -425,7 +486,6 @@ const WrappedInterface = compose(
     TWProjectMetaFetcherHOC,
     TWStateManagerHOC,
     TWThemeHOC,
-    TWRestorePointHOC,
     TWPackagerIntegrationHOC
 )(ConnectedInterface);
 

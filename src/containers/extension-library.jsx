@@ -2,9 +2,9 @@ import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
 import VM from 'scratch-vm';
-import {defineMessages, injectIntl, intlShape} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import log from '../lib/log';
-import {manuallyTrustExtension} from './tw-security-manager.jsx';
+import { manuallyTrustExtension } from './tw-security-manager.jsx';
 
 import extensionLibraryContent from '../lib/libraries/extensions/index.jsx';
 import extensionTags from '../lib/libraries/extension-tags';
@@ -31,14 +31,111 @@ const messages = defineMessages({
     }
 });
 
+// Only trust loading extension links from these origins.
+// For user-made libraries.
+const TRUSTED_LOADEXT_ORIGINS = [
+    'https://studio.penguinmod.site', // for development
+    'https://studio.penguinmod.com', // for development
+    'https://extensions.penguinmod.com',
+    'https://sharkpools-extensions.vercel.app',
+];
+
 class ExtensionLibrary extends React.PureComponent {
-    constructor (props) {
+    constructor(props) {
         super(props);
         bindAll(this, [
-            'handleItemSelect'
+            'handleItemSelect',
+            'wrapperEventHandler'
         ]);
     }
-    handleItemSelect (item) {
+
+    componentDidMount() {
+        window.addEventListener('message', this.wrapperEventHandler);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('message', this.wrapperEventHandler);
+    }
+    async wrapperEventHandler(e) {
+        // Don't recursively try to run this event.
+        if (e.origin === window.origin) {
+            return;
+        }
+
+        // Only trust loading extension links from these origins.
+        let foundTrustedOrigin = false;
+        for (const trustedOrigin of TRUSTED_LOADEXT_ORIGINS) {
+            if (e.origin.startsWith(trustedOrigin)) {
+                foundTrustedOrigin = true;
+                break;
+            }
+        }
+        if (!foundTrustedOrigin) {
+            console.log(e.origin);
+            e.source.postMessage({
+                p4: {
+                    type: 'error',
+                    error: 'not_trusted'
+                }
+            }, e.origin);
+            return;
+        }
+
+        if (!e.data.loadExt) {
+            e.source.postMessage({
+                p4: {
+                    type: 'error',
+                    error: 'no_loadExt'
+                }
+            }, e.origin);
+            return;
+        }
+
+        const extensionId = e.data.loadExt;
+        if (typeof extensionId !== 'string') {
+            e.source.postMessage({
+                p4: {
+                    type: 'error',
+                    error: 'not_string'
+                }
+            }, e.origin);
+            return;
+        }
+
+        // load the extension like any other custom extension url (this means sandboxing for some urls)
+        if (this.props.vm.extensionManager.isExtensionLoaded(extensionId)) {
+            this.props.onCategorySelected(extensionId);
+            // i mean, technically we succeeded
+            e.source.postMessage({
+                p4: {
+                    type: 'success'
+                }
+            }, e.origin);
+        } else {
+            this.props.vm.extensionManager.loadExtensionURL(extensionId)
+                .then(() => {
+                    this.props.onCategorySelected(extensionId);
+                    // succeeded
+                    e.source.postMessage({
+                        p4: {
+                            type: 'success'
+                        }
+                    }, e.origin);
+                })
+                .catch(err => {
+                    log.error(err);
+                    // The source website is expected to display the error
+                    e.source.postMessage({
+                        p4: {
+                            type: 'error',
+                            error: 'couldnt_load',
+                            pmerror: String(err.stack ? err.stack : err)
+                        }
+                    }, e.origin);
+                });
+        }
+    }
+
+    handleItemSelect(item) {
         // eslint-disable-next-line no-alert
         // if (item.incompatibleWithScratch && !confirm(this.props.intl.formatMessage(messages.incompatible))) {
         //     return;
@@ -57,7 +154,7 @@ class ExtensionLibrary extends React.PureComponent {
             return;
         }
         if (extensionId === 'special_penguinmodExtensionLibrary') {
-            window.open('https://extensions.penguinmod.site/');
+            window.open('https://extensions.penguinmod.com/');
             return;
         }
         const url = item.extensionURL ? item.extensionURL : extensionId;
@@ -91,7 +188,7 @@ class ExtensionLibrary extends React.PureComponent {
             }
         }
     }
-    render () {
+    render() {
         const extensionLibraryThumbnailData = extensionLibraryContent.map(extension => ({
             rawURL: extension.iconURL || extensionIcon,
             disabled: extension.disabled && !this.props.liveTest,

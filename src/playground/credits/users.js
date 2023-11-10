@@ -20,8 +20,8 @@ const fromHardcodedGithub = username => ({
     text: username
 });
 const fromHardcodedNamed = username => ({
-    image: `https://penguinmod.site/unknown_user.png`,
-    href: "https://studio.penguinmod.site/credits.html#",
+    image: `https://penguinmod.com/unknown_user.png`,
+    href: "https://studio.penguinmod.com/credits.html#",
     text: username
 });
 
@@ -149,7 +149,7 @@ const extensionDevelopers = [
     'griffpatch',
     'DT-is-not-available',
     'Vadik1',
-    'MikeDev',
+    'MikeDev101',
     'LilyMakesThings'
 ].map(fromHardcodedGithub);
 const pmExtensionDevelopers = [
