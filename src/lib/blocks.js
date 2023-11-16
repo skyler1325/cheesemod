@@ -515,11 +515,6 @@ export default function (vm) {
             text: 'Remove Extension',
             enabled: true,
             callback: ext => {
-                const workspace = ScratchBlocks.getMainWorkspace();
-                const categoryInfo = vm.runtime._blockInfo.find(info => info.id === ext);
-                for (const {opcode} of categoryInfo.blocks) {
-                    ScratchBlocks.removeAllBlocksOfType(workspace, `${ext}_${opcode}`);
-                }
                 vm.extensionManager.removeExtension(ext);
             }
         }
