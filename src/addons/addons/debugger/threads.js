@@ -62,7 +62,7 @@ export default async function createThreadsTab({ debug, addon, console, msg }) {
       }
     }
 
-    // pm: we are always compiled so this isnt that helpful
+    // pm: this isnt very useful if every thread will be compiled
     // if (row.type === "compiled") {
     //   const el = document.createElement('div');
     //   el.className = "sa-debugger-thread-compiled";
