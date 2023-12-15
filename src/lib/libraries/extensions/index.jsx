@@ -330,11 +330,11 @@ const menuItems = [
         extDeveloper: 'pinksheep2917'
     },
     {
-        name: 'Extended Sound',
+        name: 'Sound Systems',
         extensionId: 'jgExtendedAudio',
         iconURL: jgExtendedAudioExtensionIcon,
         tags: ['penguinmod', 'categoryexpansion'],
-        description: 'Free speed and pitch control, starting sounds at certain positions, stopping sounds, etc.',
+        description: 'An audio grouping system for more intensive audio work.',
         featured: true
     },
     {
@@ -362,8 +362,7 @@ const menuItems = [
         tags: ['penguinmod', 'categoryexpansion'],
         description: "More control blocks for animations, complex systems or cleaner one-time use blocks.",
         featured: true,
-        // uncomment when thread block is added
-        // credits: 'CST1229'
+        credits: '"as new broadcast" by CubesterYT, CST1229'
     },
     {
         name: 'Sensing Expansion',
@@ -954,7 +953,7 @@ const menuItems = [
         credits: 'Started by JeremyGamer13, continued by jwklong',
         tags: ['extcreate'],
         featured: true,
-        disabled: true
+        disabled: !(IsLocal || IsLiveTests)
     },
     {
         // not really an extension, but it's easiest to present it as one
@@ -980,6 +979,14 @@ const menuItems = [
 
 if (IsLocal || IsLiveTests) {
     const extras = [
+        {
+            name: 'Christmas',
+            extensionId: 'jgChristmas',
+            iconURL: defaultExtensionIcon,
+            tags: ['penguinmod'],
+            description: 'hooraye',
+            featured: true
+        },
         {
             name: 'Legacy Files',
             extensionId: 'jgFiles',
@@ -1070,6 +1077,7 @@ if (IsLocal || IsLiveTests) {
             iconURL: defaultExtensionIcon,
             tags: ['penguinmod'],
             description: 'Test extension to see if things are possible.\nDO NOT USE THIS IN PRODUCTION as blocks are subject to change and may corrupt your projects.',
+            credits: 'Some features added from LilyMakesThings, CubesterYT, TheShovel',
             featured: true
         },
         {

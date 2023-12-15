@@ -384,8 +384,14 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                 </shadow>
             </value>
         </block>
+        <block type="looks_setTintColor">
+            <value name="color">
+                <shadow type="colour_picker"></shadow>
+            </value>
+        </block>
         <block type="looks_cleargraphiceffects"/>
         <block type="looks_getEffectValue"/>
+        <block type="looks_tintColor"/>
         ${blockSeparator}
         ${isStage ? '' : `
             <block type="looks_show"/>
@@ -1358,6 +1364,18 @@ const variables = function () {
     `;
 };
 
+const lists = function () {
+    return `
+    <category
+        name="Lists"
+        id="lists"
+        colour="#FF661A"
+        secondaryColour="#FF5500"
+        custom="LIST">
+    </category>
+    `;
+};
+
 const myBlocks = function () {
     return `
     <category
@@ -1446,7 +1464,8 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const controlXML = moveCategory('control') || control(isInitialSetup, isStage, targetId);
     const sensingXML = moveCategory('sensing') || sensing(isInitialSetup, isStage, targetId);
     const operatorsXML = moveCategory('operators') || operators(isInitialSetup, isStage, targetId);
-    const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
+    const variablesXML = moveCategory('variables') || variables(isInitialSetup, isStage, targetId);
+    const listsXML = moveCategory('lists') || lists(isInitialSetup, isStage, targetId);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
     const liveTestsXML = moveCategory('liveTests') || liveTests(isLiveTest);
 
@@ -1460,6 +1479,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         sensingXML, gap,
         operatorsXML, gap,
         variablesXML, gap,
+        listsXML, gap,
         myBlocksXML, gap,
         isLiveTest ? [liveTestsXML, gap] : ''
     ];
