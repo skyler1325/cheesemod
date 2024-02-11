@@ -94,9 +94,9 @@ const formatProjectTitle = _title => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'A mod of TurboWarp',
+        defaultMessage: 'Editor',
         description: 'Title of homepage',
-        id: 'tw.guiDefaultTitle'
+        id: 'pm.guiDefaultTitle'
     }
 });
 
@@ -194,14 +194,14 @@ const Footer = () => (
                     </a>
                 </div>
                 <div className={styles.footerSection}>
-                    <a href="terms.html">
+                    <a href="https://penguinmod.com/terms">
                         <FormattedMessage
                             defaultMessage="Terms of Service"
                             description="Link to Terms of Service"
                             id="pm.terms"
                         />
                     </a>
-                    <a href="privacy.html">
+                    <a href="https://penguinmod.com/privacy">
                         <FormattedMessage
                             defaultMessage="Privacy Policy"
                             description="Link to privacy policy"
@@ -253,7 +253,7 @@ const numberSuffixes = [
     'th',
     'th',
     'th'
-]
+];
 const addNumberSuffix = num => {
     if (!num) return `${num}`;
     if (num < 20 && num > 10) return `${num}th`;
