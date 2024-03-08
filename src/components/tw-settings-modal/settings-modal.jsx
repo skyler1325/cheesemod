@@ -1,4 +1,5 @@
 import { defineMessages, FormattedMessage, intlShape, injectIntl } from 'react-intl';
+import { useLocation, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -39,6 +40,47 @@ const LearnMore = props => (
         </DocumentationLink>
     </React.Fragment>
 );
+
+const EnableLiveTests = props => {
+    const history = useHistory();
+    const location = useLocation();
+
+    const handleChange = () => {
+        const currentUrl = location.pathname + location.search;
+        const isLiveTestsEnabled = currentUrl.includes("?livetests");
+
+        const newUrl = isLiveTestsEnabled
+            ? currentUrl.replace("?livetests", "")
+            : `${currentUrl}?livetests`;
+
+        history.push(newUrl);
+        window.location.reload();
+    };
+
+    return (
+        <BooleanSetting
+            {...props}
+            onChange={handleChange}
+            label={
+                <FormattedMessage
+                    defaultMessage="Enable LiveTests"
+                    description="Enable LiveTests setting"
+                    id="pm.settingsModal.enableLiveTests"
+                />
+            }
+            help={
+                <div>
+                    <FormattedMessage
+                        defaultMessage="THIS WILL REFRESH THE PAGE. SAVE YOUR PROJECT BEFORE ENABLING."
+                        description="Warning for LiveTests setting"
+                        id="pm.settingsModal.enableLiveTestsWarning"
+                    />
+                </div>
+            }
+            slug="enable-livetests"
+        />
+    );
+};
 
 class UnwrappedSetting extends React.Component {
     constructor(props) {
@@ -529,6 +571,18 @@ const SettingsModalComponent = props => (
                     {...props}
                 />
             )}
+
+            <Header>
+                <FormattedMessage
+                    defaultMessage="Development"
+                    description="Settings modal section"
+                    id="pm.settingsModal.development"
+                />
+            </Header>
+            <EnableLiveTests
+                value={window.location.search.includes('?livetests')}
+            />
+
             {/* {!props.isEmbedded && (
                 <StoreProjectOptions
                     {...props}
