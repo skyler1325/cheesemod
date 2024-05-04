@@ -72,6 +72,7 @@ const addons = [
 
 const newAddons = [
     'vol-slider',
+    '60fps',
     'number-pad',
     'rename-broadcasts',
     'sprite-properties',
