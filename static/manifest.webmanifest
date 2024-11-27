@@ -1,7 +1,7 @@
 {
-  "short_name": "PenguinMod",
+  "short_name": "MerrIDE",
   "name": "PenguinMod",
-  "description": "Mod of TurboWarp that was made to allow for really cool projects.",
+  "description": "Mod of PenguinMod that was made to allow for really cool projects.",
   "icons": [
     {
       "src": "images/192.png",
